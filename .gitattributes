@@ -1,0 +1,36 @@
+# Auto-detect text files and normalize line endings to LF on commit
+* text=auto eol=lf
+
+# Shell scripts must use LF
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Windows-specific files use CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files — don't touch
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Go source
+*.go text eol=lf
+
+# Markdown — keep as-is, but normalize on commit
+*.md text
+
+# Exclude from GitHub's language stats
+docs/* linguist-documentation
+testdata/* linguist-vendored
+vendor/* linguist-vendored
