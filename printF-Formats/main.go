@@ -83,4 +83,19 @@ func main() {
 	fmt.Printf("%.2f\n", myFloat)  // decimal point but no exponent with 2 decimal places
 	fmt.Printf("%6.2f\n", myFloat) // decimal point but no exponent with 2 decimal places and minimum width of 6
 	fmt.Printf("%g\n", myFloat)    // compact representation of the float with no exponent if possible
+	/*
+	   3.14
+	   3.14
+	   3.14%
+	   float64
+	   3.140000e+00
+	   3.140000E+00
+	   3.140000
+	   3.14
+	     3.14
+	   3.14
+	*/
+
+	fmt.Println("\nPress Enter to exit...")
+	fmt.Scanln()
 }
