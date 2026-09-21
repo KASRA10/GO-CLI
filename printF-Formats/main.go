@@ -43,4 +43,44 @@ func main() {
 		77
 		0077
 	*/
+	fmt.Println("---------------------------------------------------")
+	// String Formats
+	name := "Kasra"
+
+	fmt.Printf("%v\n", name)   // default format
+	fmt.Printf("%#v\n", name)  // Go-syntax representation of the value
+	fmt.Printf("%v%%\n", name) // percent sign
+	fmt.Printf("%T\n", name)   // type of the value
+	fmt.Printf("%s\n", name)   // string representation
+	fmt.Printf("%q\n", name)   // double-quoted string representation
+	fmt.Printf("%8s\n", name)  // string representation with minimum width of 8
+	fmt.Printf("%-8s\n", name) // string representation with minimum width of 8 and left-justified
+	fmt.Printf("%x\n", name)   // hexadecimal representation of the string
+	fmt.Printf("% x\n", name)  // hexadecimal representation of the string with spaces between bytes
+	/*
+		Kasra
+		"Kasra"
+		Kasra%
+		string
+		Kasra
+		"Kasra"
+		   Kasra
+		Kasra
+		4b61737261
+		4b 61 73 72 61
+	*/
+	fmt.Println("---------------------------------------------------")
+	// Float Formats
+	myFloat := 3.140
+
+	fmt.Printf("%v\n", myFloat)    // default format
+	fmt.Printf("%#v\n", myFloat)   // Go-syntax representation of the value
+	fmt.Printf("%v%%\n", myFloat)  // percent sign
+	fmt.Printf("%T\n", myFloat)    // type of the value
+	fmt.Printf("%e\n", myFloat)    // scientific notation with exponent
+	fmt.Printf("%E\n", myFloat)    // scientific notation with exponent (uppercase)
+	fmt.Printf("%f\n", myFloat)    // decimal point but no exponent
+	fmt.Printf("%.2f\n", myFloat)  // decimal point but no exponent with 2 decimal places
+	fmt.Printf("%6.2f\n", myFloat) // decimal point but no exponent with 2 decimal places and minimum width of 6
+	fmt.Printf("%g\n", myFloat)    // compact representation of the float with no exponent if possible
 }
