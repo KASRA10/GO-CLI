@@ -1,0 +1,14 @@
+2. Build a text-file journal
+Write a program that asks the user for one journal entry, then appends it to:
+
+text
+workspace/data/journal.txt
+Requirements:
+
+Use os.OpenFile.
+Use os.O_WRONLY, os.O_CREATE, and os.O_APPEND.
+Add a newline after every entry.
+Use defer file.Close().
+Finally, read the whole file with os.ReadFile and print it.
+
+Important: Do not use os.Create, because it would erase earlier journal entries. O_APPEND writes each new entry at the file’s end.
