@@ -1,0 +1,11 @@
+1. Create a workspace
+Write a program that:
+
+Creates this nested folder path:
+
+workspace/data/logs
+Uses os.MkdirAll.
+Prints the current working directory with os.Getwd.
+Handles every error.
+
+Challenge: What permission mode would you choose for normal project folders: 0755 or 0644? Explain why.
