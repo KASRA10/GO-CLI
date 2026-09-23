@@ -1,0 +1,16 @@
+5. Safe backup and cleanup tool
+Create a program that manages your settings.json file.
+
+Requirements:
+Check whether workspace/data/settings.json can be read.
+If it exists, rename it to:
+
+workspace/data/settings.backup.json
+If settings.backup.json already exists, decide whether to overwrite it or show an error.
+
+Create a temporary working directory with os.MkdirTemp.
+Print its path.
+Clean it up using defer os.RemoveAll(tempDir).
+
+Safety rule: Never call os.RemoveAll on a path you did not deliberately construct or validate.
+It recursively removes a directory and its contents.
