@@ -1,0 +1,27 @@
+3. JSON settings manager
+Create a settings.json file in workspace/data/ that stores:
+
+json
+{
+  "name": "Kasra",
+  "theme": "dark",
+  "fontSize": 16
+}
+Requirements:
+Define a Go struct named Settings.
+Convert the struct into JSON with encoding/json.
+Save the JSON using os.WriteFile.
+Read it back with os.ReadFile.
+Convert it back to a Settings value using json.Unmarshal.
+Print the loaded struct.
+
+Use this structure as a start:
+
+
+type Settings struct {
+	Name     string `json:"name"`
+	Theme    string `json:"theme"`
+	FontSize int    `json:"fontSize"`
+}
+Challenge: Before calling os.ReadFile, what error should your program handle if settings.
+json has not been created yet?
