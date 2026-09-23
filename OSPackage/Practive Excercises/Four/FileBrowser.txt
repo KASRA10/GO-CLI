@@ -1,0 +1,20 @@
+4. File browser
+Write a program that lists everything inside workspace/data.
+
+For every item, display:
+
+text
+Name: journal.txt | Type: file | Size: 120 bytes
+Name: logs        | Type: folder
+Requirements:
+
+Use os.ReadDir("workspace/data").
+Use entry.IsDir() to identify folders.
+For files, use entry.Info() or os.Stat() to retrieve the size.
+Display the modification time with info.ModTime() too.
+
+ReadDir gives directory entries,
+while Stat or DirEntry.Info gives metadata such as size, mode, and modification time.
+
+Advance:
+Get Directory From User And Then Read it.
