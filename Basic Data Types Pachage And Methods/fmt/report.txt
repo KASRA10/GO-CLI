@@ -1,0 +1,2 @@
+This is a sample report.
+Total sales: 1500.75
