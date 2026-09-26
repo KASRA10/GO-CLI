@@ -46,6 +46,140 @@ func main() {
 
 	// Case-insensitive equality
 	fmt.Println(strings.EqualFold("GO", "go")) // true
+
+	// First occurrence
+	fmt.Println(strings.Index(myString, "GO"))     // 6
+	fmt.Println(strings.Index(myString, "Google")) // -1
+
+	// Last occurrence
+	fmt.Println(strings.LastIndex("GO With GO", "GO")) // 8
+
+	// First occurrence of any listed character
+	fmt.Println(strings.IndexAny("Kasra", "xyzs")) // 2
+
+	// Last occurrence of any listed character
+	fmt.Println(strings.LastIndexAny("go.dev", "./")) // 2
+
+	// Search for one byte: good for ASCII characters
+	fmt.Println(strings.IndexByte(myString, '1'))     // -1
+	fmt.Println(strings.LastIndexByte(myString, '1')) // -1
+
+	// Search for one rune: appropriate for Unicode characters too
+	fmt.Println(strings.IndexRune("سلام دنیا!", 'س')) // 0
+
+	// Find first digit using a rule
+	fmt.Println(strings.IndexFunc("Product-110", unicode.IsDigit)) // 8
+
+	// Find last digit using a rule
+	fmt.Println(strings.LastIndexFunc("Product-110", unicode.IsDigit)) // 10
+
+	text := "GO=Developers=GODEV"
+	// Cut: divide at the FIRST "="
+	key, value, found := strings.Cut(text, "=")
+	fmt.Println(key, value, found) // GO Developers=GODEV true
+
+	before, after, found := strings.CutLast(text, "=")
+	fmt.Println(before, after, found) // GO=Developers GODEV true
+
+	// CutPrefix: remove prefix and report success
+	beforePrefix, found := strings.CutPrefix(text, "GO=Developers=")
+	fmt.Println(beforePrefix, found) // GODEV true
+
+	// CutSuffix: remove suffix and report success
+	beforeSuffix, found := strings.CutSuffix(text, "=GODEV")
+	fmt.Println(beforeSuffix, found) // GO=Developers trues
+
+	// Split: all pieces
+	split := strings.Split("go, php, mysql", ",")
+	fmt.Println(split)      // [go  php  mysql]
+	fmt.Printf("%T", split) // []string
+
+	// SplitN: at most n pieces
+	fmt.Println(strings.SplitN("go, php, js, mysql", ",", 2)) // []string[go  php, js, mysql]
+
+	// SplitAfterN: separator stays attached, at most n pieces
+	fmt.Println(strings.SplitAfterN("go, php, js, mysql", ",", 2)) // [go,  php, js, mysql]
+
+	// Fields: split by one or more whitespace characters
+	fmt.Println(strings.Fields("   This\nIs  Go\tDeveloping ")) // [This Is Go Developing]
+
+	// Join: reverse of Split
+	languages := []string{"GO", "PHP", "MySQL"}
+	fmt.Printf("%q\n", strings.Join(languages, "|")) // "GO|PHP|MySQL"
+
+	text = "GO Is Great. GO Is Fast!"
+
+	// Replace every match
+	fmt.Println(strings.ReplaceAll(text, "GO", "GoLang")) // GoLang Is Great. GoLang Is Fast!
+
+	// Replace only the first match
+	fmt.Println(strings.Replace(text, "GO", "GoLang", 1)) // GoLang Is Great. GO Is Fast!
+
+	// Repeat
+	fmt.Println(strings.Repeat("*", 25)) // *************************
+
+	// Lowercase / uppercase
+	fmt.Println(strings.ToLower(text)) // go is great. go is fast!
+	fmt.Println(strings.ToUpper(text)) // GO IS GREAT. GO IS FAST!
+
+	// ToTitle changes every letter to title case
+	fmt.Println(strings.ToTitle(text)) // GO IS GREAT. GO IS FAST!
+
+	// NewReplacer: replace several pairs efficiently
+	replacer := strings.NewReplacer(
+		"Go", "Golang",
+		"PHP", "PHP 8",
+		"JS", "JavaScript",
+	)
+
+	fmt.Println(replacer.Replace("Go, PHP, JS"))
+	// Golang, PHP 8, JavaScript
+
+	text = "  !! hello Go !!  "
+
+	// Remove outside whitespace
+	fmt.Println(strings.TrimSpace(text)) // !! hello Go !!
+
+	// Remove spaces and ! from BOTH ends
+	fmt.Println(strings.Trim(text, " !")) // hello Go
+
+	// Only left side
+	fmt.Println(strings.TrimLeft("---title", "-")) // title
+
+	// Only right side
+	fmt.Println(strings.TrimRight("title---", "-")) // title
+
+	// Exact prefix and suffix
+	fmt.Println(strings.TrimPrefix("https://example.com", "https://"))
+	// example.com
+
+	fmt.Println(strings.TrimSuffix("photo.png", ".png"))
+	// photo
+
+	// Trim according to a rule: remove starting/ending digits
+	fmt.Println(strings.TrimFunc("123hello456", unicode.IsDigit))
+	// hello
+
+	fmt.Println(strings.TrimLeftFunc("123hello", unicode.IsDigit))
+	// hello
+
+	fmt.Println(strings.TrimRightFunc("hello456", unicode.IsDigit))
+	// hello
+
+	// NewReader: makes a string act like an io.Reader.
+	// Helpful when another function expects a reader.
+	reader := strings.NewReader("Hello Go")
+
+	buffer := make([]byte, 5)
+	reader.Read(buffer)
+
+	fmt.Println(string(buffer)) // Hello
+
+	// ToValidUTF8: replaces invalid UTF-8 bytes.
+	broken := string([]byte{'G', 'o', 0xff, '!'})
+	clean := strings.ToValidUTF8(broken, "?")
+
+	fmt.Println(clean) // Go?
 }
 
 /*
