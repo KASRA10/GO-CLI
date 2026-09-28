@@ -20,4 +20,5 @@ func ELogger(message string) (*log.Logger, *os.File, error) {
 	for _, entry := range entires {
 	}
 	// End Of Step1
+	// TODO: OTher Steps Should Be Added
 }
