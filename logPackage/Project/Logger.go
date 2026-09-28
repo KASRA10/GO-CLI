@@ -1,24 +1,27 @@
 package logger
 
 import (
-	"error"
+	"errors"
 	"fmt"
-	"log"
 	"os"
-	"time"
-
-	"path.filepath"
 )
 
-func ELogger(message string) (*log.Logger, *os.File, error) {
-	// step1: check directory for Log Folder
-	entires, err := os.ReadDir("./")
+func ELogger(message string) {
+	// Global variables
+	currentPath, err := os.Getwd()
 	if err != nil {
-		errors.New("Could Not Read Current Directory")
+		err = errors.New("Cannot Access To Current Path")
+		fmt.Println(err)
+	}
+	fmt.Printf("CWD: %v\n", currentPath)
+
+	// Step1: Check Log Directory
+	entires, err := os.ReadDir(currentPath)
+	if err != nil {
+		err = errors.New("Cannot Read Directory")
+		fmt.Println(err)
 	}
 
-	for _, entry := range entires {
-	}
+	fmt.Printf("%T\n", entires)
 	// End Of Step1
-	// TODO: OTher Steps Should Be Added
 }
